@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduMatch - Encontre o Curso Ideal</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🎓</span>
+                    <h1>EduMatch</h1>
+                </div>
+                <p class="tagline">Encontre o curso perfeito para sua carreira</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container main-content">
+        <!-- Filter Section -->
+        <section class="filter-section" aria-label="Filtros de busca">
+            <h2 class="section-title">Buscar Cursos</h2>
+            <p class="section-subtitle">Preencha os filtros abaixo para encontrar as melhores recomendações</p>
+
+            <form id="filter-form" class="filter-form">
+                <div class="filter-grid">
+                    <!-- Nível -->
+                    <div class="filter-group">
+                        <label for="nivel">Nível do Curso</label>
+                        <select id="nivel" name="nivel">
+                            <option value="">Todos os níveis</option>
+                        </select>
+                    </div>
+
+                    <!-- Área -->
+                    <div class="filter-group">
+                        <label for="area">Área de Interesse</label>
+                        <select id="area" name="area">
+                            <option value="">Todas as áreas</option>
+                        </select>
+                    </div>
+
+                    <!-- Assuntos -->
+                    <div class="filter-group filter-group-wide">
+                        <label for="assuntos">Assuntos de Interesse</label>
+                        <input type="text" id="assuntos" name="assuntos" 
+                               placeholder="Ex: programação, inteligência artificial, machine learning">
+                        <small class="hint">Separe os assuntos por vírgula</small>
+                    </div>
+
+                    <!-- Duração Máxima -->
+                    <div class="filter-group">
+                        <label for="duracao_max">Duração Máxima (meses)</label>
+                        <input type="number" id="duracao_max" name="duracao_max" 
+                               min="1" max="72" placeholder="Ex: 24">
+                    </div>
+
+                    <!-- Horário -->
+                    <div class="filter-group">
+                        <label for="horario">Horário Preferido</label>
+                        <select id="horario" name="horario">
+                            <option value="">Qualquer horário</option>
+                        </select>
+                    </div>
+
+                    <!-- Modalidade -->
+                    <div class="filter-group">
+                        <label for="modalidade">Modalidade</label>
+                        <select id="modalidade" name="modalidade">
+                            <option value="">Qualquer modalidade</option>
+                        </select>
+                    </div>
+
+                    <!-- Preço Máximo -->
+                    <div class="filter-group">
+                        <label for="preco_max">Preço Máximo Mensal (R$)</label>
+                        <input type="number" id="preco_max" name="preco_max" 
+                               min="0" step="50" placeholder="Ex: 1500">
+                    </div>
+
+                    <!-- Cidade -->
+                    <div class="filter-group">
+                        <label for="cidade">Cidade</label>
+                        <select id="cidade" name="cidade">
+                            <option value="">Qualquer cidade</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="filter-actions">
+                    <button type="submit" class="btn btn-primary" id="btn-buscar">
+                        <span class="btn-icon">🔍</span> Buscar Cursos
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="btn-limpar">
+                        <span class="btn-icon">🗑️</span> Limpar Filtros
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Loading -->
+        <div id="loading" class="loading hidden" aria-live="polite">
+            <div class="spinner"></div>
+            <p>Buscando as melhores recomendações...</p>
+        </div>
+
+        <!-- Results Section -->
+        <section id="results-section" class="results-section hidden" aria-label="Resultados">
+            <div class="results-header">
+                <h2 class="section-title">Cursos Recomendados</h2>
+                <p id="results-count" class="results-count"></p>
+            </div>
+
+            <div id="results-container" class="results-grid">
+                <!-- Cards de cursos serão inseridos aqui via JS -->
+            </div>
+        </section>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="empty-state hidden">
+            <span class="empty-icon">📚</span>
+            <h3>Nenhum curso encontrado</h3>
+            <p>Tente ajustar seus filtros para encontrar mais opções.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 EduMatch - Sistema de Recomendação de Cursos</p>
+        </div>
+    </footer>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
